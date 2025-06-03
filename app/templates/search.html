@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Company Search</title>
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 p-10">
+
+    <div class="max-w-xl mx-auto">
+        <h1 class="text-2xl font-bold mb-4">Search Companies</h1>
+        <input 
+            type="text" 
+            name="q" 
+            placeholder="Type company name..." 
+            class="w-full p-2 border rounded mb-2"
+            hx-get="/suggest"
+            hx-trigger="keyup changed delay:200ms"
+            hx-target="#suggestions"
+            hx-swap="innerHTML"
+        >
+        <div id="suggestions" class="bg-white shadow rounded border mb-4"></div>
+
+        <button 
+            class="bg-blue-500 text-white px-4 py-2 rounded"
+            hx-get="/search"
+            hx-include="[name='q']"
+            hx-target="#results"
+            hx-swap="innerHTML"
+        >Search</button>
+
+        <div id="results" class="mt-6"></div>
+    </div>
+
+</body>
+</html>

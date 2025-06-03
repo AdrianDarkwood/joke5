@@ -1,0 +1,14 @@
+{% if companies %}
+    <ul class="space-y-2">
+        {% for company in companies %}
+            <li class="p-4 bg-white shadow rounded">
+                <h2 class="text-lg font-bold">{{ company.company }}</h2>
+                <p>{{ company.head_office_location }} | {{ company.primary_industry }}</p>
+                <p><a href="{{ company.website }}" class="text-blue-500">{{ company.website }}</a></p>
+                <p class="text-sm text-gray-600">{{ company.short_description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p class="text-gray-600">No companies found.</p>
+{% endif %}
